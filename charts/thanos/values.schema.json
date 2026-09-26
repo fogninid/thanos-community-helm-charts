@@ -1292,6 +1292,13 @@
           "title": "pdb",
           "type": "object"
         },
+	"ephemeral": {
+          "additionalProperties": true,
+          "description": "Use an ephemeral volume for the Compactor working directory. `persistence.enabled` must be disabled for this setting to take effect.",
+          "required": [],
+          "title": "ephemeral",
+          "type": "object"
+	},
         "persistence": {
           "additionalProperties": true,
           "description": "PersistentVolumeClaim configuration for the Compactor working directory.",
