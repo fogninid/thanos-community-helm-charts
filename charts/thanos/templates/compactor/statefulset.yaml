@@ -93,8 +93,14 @@ spec:
               - key: {{ .Values.global.objstore.secretKey }}
                 path: objstore.yml
         {{- if not .Values.compactor.persistence.enabled }}
+        {{- if .Values.compactor.ephemeral }}
+        - name: data
+          ephemeral:
+            {{- toYaml .Values.compactor.ephemeral | nindent 12 }}
+        {{- else }}
         - name: data
           emptyDir: {}
+        {{- end }}
         {{- end }}
         {{- if and .Values.compactor.persistence.enabled .Values.compactor.persistence.existingClaim }}
         - name: data
