@@ -799,6 +799,19 @@ compactor:
   # See https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/#minimum-ready-seconds
   minReadySeconds: 0
 
+  # -- Use an ephemeral volume for the Compactor working directory. `persistence.enabled` must be disabled for this setting to take effect.
+  ephemeral: null
+  # Example:
+  # ephemeral:
+  #   volumeClaimTemplate:
+  #     spec:
+  #       accessModes:
+  #       - ReadWriteOnce
+  #       resources:
+  #         requests:
+  #           storage: 10Gi
+  #       storageClassName: ephemeral-class
+
   # PersistentVolumeClaim configuration for the Compactor working directory.
   persistence:
     # -- Enable a PersistentVolumeClaim for the Compactor working directory.
